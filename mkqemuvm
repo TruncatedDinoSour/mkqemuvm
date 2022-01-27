@@ -5,6 +5,7 @@
 #   - fzf
 #   - qemu
 #   - edk2-ovmf
+#   - bash
 
 set -e
 
@@ -13,6 +14,24 @@ DRIVE_FORMATS=(raw qcow2 bochs cloop cow dmg nbd parallels qcow qed vdi vhdx vmd
 VM_NAME_DISALOWED_CHARS="\n\./\*\[\]\{\},"
 BIOS="OVMF_CODE.fd"
 DOAS="${__BASH_DOAS:-sudo}"
+
+HOME="${HOME:-$(eval echo '~')}"
+
+__CONFIG_FILE="$HOME"/.config/mkqemuvm.conf
+if [ ! -f "$__CONFIG_FILE" ]; then
+    echo "Made new config"
+
+    {
+        echo "#!/usr/bin/env bash"
+        echo "export FZF_FLAGS=(${FZF_FLAGS[*]})"
+        echo "export DRIVE_FORMATS=(${DRIVE_FORMATS[*]})"
+        echo "export VM_NAME_DISALOWED_CHARS=\"$VM_NAME_DISALOWED_CHARS\""
+        echo "export BIOS='$BIOS'"
+        echo "export __BASH_DOAS='${DOAS}'"
+    } >"$__CONFIG_FILE"
+fi
+
+source "$__CONFIG_FILE" &>/dev/null || true
 
 _depend() {
     case "$1" in

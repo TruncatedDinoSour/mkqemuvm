@@ -21,3 +21,15 @@ sudo install -Dm755 mkqemuvm /usr/local/bin
 
 - Linux
   - Gentoo linux: [app-emulation/mkqemuvm::dinolay](https://ari-web.xyz/gentooatom/app-emulation/mkqemuvm)
+
+# Configuration
+
+Configured though environment variables
+
+- `__BASH_DOAS` -- the "sudo" program to use
+- `BIOS` -- The BIOS file to look for
+- `VM_NAME_DISALOWED_CHARS` -- Disallowed characters in the VM name
+- `DRIVE_FORMATS` -- Drive formats you want to be available though `qemu-img`
+- `FZF_FLAGS` -- The flags to pass to FZF
+
+Or just edit ~/.config/mkqemuvm.conf
