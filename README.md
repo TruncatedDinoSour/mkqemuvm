@@ -26,7 +26,7 @@ sudo install -Dm755 mkqemuvm /usr/local/bin
 
 Configured though environment variables
 
-- `__BASH_DOAS` -- the "sudo" program to use
+- `__BASH_RUNAS` -- the "sudo" program to use
 - `BIOS` -- The BIOS file to look for
 - `VM_NAME_DISALOWED_CHARS` -- Disallowed characters in the VM name
 - `DRIVE_FORMATS` -- Drive formats you want to be available though `qemu-img`

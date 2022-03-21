@@ -13,7 +13,7 @@ FZF_FLAGS=(--layout=reverse --height=20 --no-mouse -i)
 DRIVE_FORMATS=(raw qcow2 bochs cloop cow dmg nbd parallels qcow qed vdi vhdx vmdk vvfat)
 VM_NAME_DISALOWED_CHARS="\n\./\*\[\]\{\},"
 BIOS="OVMF_CODE.fd"
-DOAS="${__BASH_DOAS:-sudo}"
+DOAS="${__BASH_RUNAS:-sudo}"
 
 HOME="${HOME:-$(eval echo '~')}"
 
