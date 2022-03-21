@@ -19,16 +19,16 @@ HOME="${HOME:-$(eval echo '~')}"
 
 __CONFIG_FILE="$HOME"/.config/mkqemuvm.conf
 if [ ! -f "$__CONFIG_FILE" ]; then
-    echo "Made new config"
-
     {
         echo "#!/usr/bin/env bash"
         echo "export FZF_FLAGS=(${FZF_FLAGS[*]})"
         echo "export DRIVE_FORMATS=(${DRIVE_FORMATS[*]})"
         echo "export VM_NAME_DISALOWED_CHARS=\"$VM_NAME_DISALOWED_CHARS\""
         echo "export BIOS='$BIOS'"
-        echo "export __BASH_DOAS='${DOAS}'"
+        echo "export __BASH_RUNAS='${DOAS}'"
     } >"$__CONFIG_FILE"
+
+    echo "Made new config"
 fi
 
 source "$__CONFIG_FILE" &>/dev/null || true
