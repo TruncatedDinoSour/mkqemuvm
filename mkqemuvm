@@ -31,7 +31,7 @@ if [ ! -f "$__CONFIG_FILE" ]; then
     echo "Made new config"
 fi
 
-source "$__CONFIG_FILE" &>/dev/null || true
+source "$__CONFIG_FILE" &>/dev/null || :
 
 _depend() {
     case "$1" in
